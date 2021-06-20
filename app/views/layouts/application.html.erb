@@ -11,17 +11,27 @@
 
   <body>
     <% if user_signed_in? %>
-    <ul>
-      <li>
-        <a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
-      </li>
-      <li>
-        <a href="#"><%= link_to "新規登録", new_user_registration_path %></a>
-      </li>
-      <li>
-        <a href="#"><%= link_to "ログイン", new_user_session_path %></a>
-      </li>
-    </ul>
+    <div id="sp-menu">
+      <ul>
+        <li>
+          <a href="#"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></a>
+        </li>
+        <li>
+          <a href="#"><%= link_to "新規登録", new_user_registration_path %></a>
+        </li>
+        <li>
+          <a href="#"><%= link_to "ログイン", new_user_session_path %></a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
     <% end %>
     <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>

@@ -1,8 +1,8 @@
 class TagMap < ApplicationRecord
-  belongs_to :post
+  belongs_to :book
   belongs_to :tag
 　
-  validates :post_id, presence: true
+  validates :book_id, presence: true
   validates :tag_id, presence: true
   
 end

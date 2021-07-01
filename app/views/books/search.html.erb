@@ -1,0 +1,9 @@
+<h3>タグ一覧</h3>
+
+<div class="list">
+  <% @tag_list.each do |list| %>
+    <%= link_to list.tag_name, tag_books_path(book_tag_id: list.id)%>
+  <% end %>
+</div>
+
+<%= link_to "topに戻る", books_path %>

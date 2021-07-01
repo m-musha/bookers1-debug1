@@ -9,10 +9,10 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = current_user.books.new(book_params)
+    @book = current_user.books.build(book_params)
     tag_list = params[:book][:tag_name].split(nil) #送信されてきたタグの取得
     if @book.save
-      @book.save_tag(tag_list)
+      @book.save_books(tag_list)
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     else
@@ -24,6 +24,12 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @book_tags = @book.tags
+  end
+
+  def search
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @books = @tag.books.all
   end
 
   def edit
@@ -41,8 +47,8 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    book = Book.find(params[:id])
-    book.destroy
+    @book = Book.find(params[:id])
+    @book.destroy
     redirect_to books_path
   end
 

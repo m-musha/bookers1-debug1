@@ -32,6 +32,10 @@ class BooksController < ApplicationController
     @books = @tag.books.all
   end
 
+  def tag
+    @tag = Tag.find(params[:tag_id])
+  end
+
   def edit
     @book = Book.find(params[:id])
   end
